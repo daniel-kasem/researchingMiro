@@ -11,6 +11,7 @@
             svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
             onClick: () => {			
               //alert('Hi!')			  
+				await miro.board.widgets.create({type: 'sticker', text: 'Hello'})
 				/*
 				const waitOneSec = () => new Promise(r => setTimeout(r, 1000))
 				let sticker = (await miro.board.widgets.create({type:'sticker', text: 'Hello'}))[0]
@@ -25,10 +26,10 @@
         }
       })	  
     })
-	let sticker = (await miro.board.widgets.create({type:'sticker', text: 'Hello'}))[0]
+	//let sticker = (await miro.board.widgets.create({type:'sticker', text: 'Hello'}))[0]	
     </script>
 </head>
 <body>
-<span>Confirm changes to main.html - 5</span>
+<span>Confirm changes to main.html - 7</span>
 </body>
 </html>

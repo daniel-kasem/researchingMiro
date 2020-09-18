@@ -11,6 +11,7 @@
             svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
             onClick: () => {			
               //alert('Hi!')			  				
+			  async function(){
 				const waitOneSec = () => new Promise(r => setTimeout(r, 1000))
 				const waitTenSec = () => new Promise(r => setTimeout(r, 10000))
 				await waitTenSec() // timeout only for demo purpose
@@ -20,7 +21,7 @@
 				await miro.board.widgets.update({id: sticker.id, text: 'world!', style:{stickerBackgroundColor:'#7ac673'}}) // update sticker
 				await waitOneSec()
 				await miro.board.widgets.deleteById(sticker.id) // delete sticker			  
-				
+				}
 				//miro.board.widgets.create({type:'sticker', text: 'Hello'})
             }
           }
@@ -30,6 +31,6 @@
     </script>
 </head>
 <body>
-<span>Confirm changes to main.html - 10</span>
+<span>Confirm changes to main.html - 11</span>
 </body>
 </html>

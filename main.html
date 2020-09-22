@@ -7,7 +7,7 @@
     let currentSticker_X = 0
     let currentSticker_Y = 0
     let stickerCount = 0
-
+    let stickerOffset = 50
     miro.onReady(() => {
       miro.initialize({
         extensionPoints: {
@@ -24,11 +24,11 @@
     })
 
     async function newAsteroidSticker() {
-      currentSticker_X += 50
-      currentSticker_Y += 50
+      currentSticker_X += stickerOffset
+      currentSticker_Y += stickerOffset
       stickerCount += 1
       if (stickerCount % 4 === 0) {
-        currentSticker_Y = 0
+        currentSticker_Y = stickerOffset
       }
       let sticker = (await miro.board.widgets.create({
         "type": "image",
@@ -38,10 +38,10 @@
       }))[0]
       let stickerX = (await sticker.x)
       let stickerY = (await sticker.y)
-      let showMeXY = (await alert(stickerX, stickerY))
+      //let showMeXY = (await alert(stickerX, stickerY))
       let stickerWidth = (await sticker.bounds.width)
       let stickerHeight = (await sticker.bounds.height)
-      let showMeWH = (await alert(stickerWidth, stickerHeight))
+      //let showMeWH = (await alert(stickerWidth, stickerHeight))
       let textBox = (await miro.board.widgets.create({
         "type": "text",
         "text": "Type here :O",
@@ -58,8 +58,8 @@
                }        
                 */
       }))[0]
-      alert(stickerX & " " & stickerY)
-      alert(stickerWidth & " " & stickerHeight)
+      alert(stickerX + " " + stickerY)
+      alert(stickerWidth + " " + stickerHeight)
       //await miro.board.viewport.zoomToObject(sticker)
       await miro.board.viewport.zoomToObject(textBox)
     }
@@ -69,7 +69,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 52</span>
+  <span>Confirm changes to main.html - 53</span>
 </body>
 
 </html>

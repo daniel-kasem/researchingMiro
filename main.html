@@ -24,13 +24,15 @@
       let sticker = (await miro.board.widgets.create({
         "type": "image",
         "url": "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png"
-      }) alert(sticker.x, sticker.y))[0]
-      alert(sticker.x, sticker.y)
+      }))[0]
+      let stickerX = (await sticker.x)
+      let stickerY = (await sticker.y)
+      alert(stickerX, stickerY)
       let textBox = (await miro.board.widgets.create({
         "type": "text",
         "text": "Type here :O",
-        "x": sticker.x,
-        "y": sticker.y,
+        "x": stickerX,
+        "y": stickerY,
         "width": sticker.width,
         "height": sticker.height
         /*,
@@ -42,7 +44,7 @@
                }        
                 */
       }))[0]
-      alert(sticker.x, sticker.y)
+      alert(stickerX, stickerY)
       //await miro.board.viewport.zoomToObject(sticker)
       await miro.board.viewport.zoomToObject(textBox)
     }
@@ -52,7 +54,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 46</span>
+  <span>Confirm changes to main.html - 47</span>
 </body>
 
 </html>

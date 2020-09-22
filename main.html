@@ -4,6 +4,9 @@
 <head>
   <script type="text/javascript" src="https://miro.com/app/static/sdk.1.1.js"></script>
   <script type="text/javascript">
+    let currentSticker_X = 0
+    let currentSticker_Y = 0
+
     miro.onReady(() => {
       miro.initialize({
         extensionPoints: {
@@ -20,16 +23,19 @@
     })
 
     async function newAsteroidSticker() {
-
+      currentSticker_X += 50
+      currentSticker_Y += 50
       let sticker = (await miro.board.widgets.create({
         "type": "image",
-        "url": "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png"
+        "url": "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png",
+        "x": currentSticker_X,
+        "y": currentSticker_Y
       }))[0]
       let stickerX = (await sticker.x)
       let stickerY = (await sticker.y)
       let showMeXY = (await alert(stickerX, stickerY))
-      let stickerWidth = (await sticker.width)
-      let stickerHeight = (await sticker.height)
+      let stickerWidth = (await sticker.bounds.width)
+      let stickerHeight = (await sticker.bounds.height)
       let showMeWH = (await alert(stickerWidth, stickerHeight))
       let textBox = (await miro.board.widgets.create({
         "type": "text",
@@ -58,7 +64,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 48</span>
+  <span>Confirm changes to main.html - 50</span>
 </body>
 
 </html>

@@ -25,23 +25,25 @@
         "url": "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png"
       }))[0]
       let textBox = (await miro.board.widgets.create({
-        "type": "shape",
-        "text": "Type here :O",
-        "x": sticker.x,
-        "y": sticker.y,
-        "width": sticker.bounds.width,
-        "height": sticker.bounds.height,
-        "style": {
-          "fontFamily": "Permanent",
-          "fontSize": "14",
-          "shapeType": "rectangle",
-          "textAlign": "center",
-          "textAlignVertical": "middle",
-          "textColor": "#1a1a1a"
+          "type": "shape",
+          "text": "Type here :O"
+          /*,
+                 "x": sticker.x,
+                 "y": sticker.y,
+                 "width": sticker.bounds.width,
+                 "height": sticker.bounds.height,
+                 "style": {
+                   "fontFamily": "Permanent",
+                   "fontSize": "14",
+                   "shapeType": "rectangle",
+                   "textAlign": "center",
+                   "textAlignVertical": "middle",
+                   "textColor": "#1a1a1a"
+                   */
         }
       }))[0]
-      //await miro.board.viewport.zoomToObject(sticker)
-      await miro.board.viewport.zoomToObject(textBox)
+    //await miro.board.viewport.zoomToObject(sticker)
+    await miro.board.viewport.zoomToObject(textBox)
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
     //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
@@ -49,7 +51,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 35</span>
+  <span>Confirm changes to main.html - 36</span>
 </body>
 
 </html>

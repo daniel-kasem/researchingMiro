@@ -19,28 +19,28 @@
 	*/
     miro.onReady(() => {
           miro.initialize({
-              extensionPoints: {
-                bottomBar: {
-                  title: 'Asteroid sticker',
-                  svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
-                  onClick: () => {
-                    //alert('Hi!')	
-                    //asyncCall();			  				
-                    async () => {
-                      let sticker = (await miro.board.widgets.create({
-                        type: 'sticker',
-                        text: 'Hello'
-                      }))[0]
-                    }
+            extensionPoints: {
+              bottomBar: {
+                title: 'Asteroid sticker',
+                svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
+                onClick: () => {
+                  //alert('Hi!')	
+                  //asyncCall();			  				
+                  async () => {
+                    let sticker = (await miro.board.widgets.create({
+                      type: 'sticker',
+                      text: 'Hello'
+                    }))[0]
                   }
                 }
-              })
+              }
+            }
           })
   </script>
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 14</span>
+  <span>Confirm changes to main.html - 15</span>
 </body>
 
 </html>

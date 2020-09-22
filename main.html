@@ -24,7 +24,7 @@
         "type": "image",
         "url": "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png"
       }))[0]
-      await miro.board.widgets.create({
+      let textBox = (await miro.board.widgets.create({
         "type": "shape",
         "text": "Type here :O",
         "x": sticker.x,
@@ -46,8 +46,9 @@
           "textAlignVertical": "middle", // default: "middle"
           "textColor": "#1a1a1a" // default: "#1a1a1a"
         }
-      })
-      await miro.board.viewport.zoomToObject(sticker)
+      }))[0]
+      //await miro.board.viewport.zoomToObject(sticker)
+      await miro.board.viewport.zoomToObject(textBox)
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
     //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
@@ -55,7 +56,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 29</span>
+  <span>Confirm changes to main.html - 30</span>
 </body>
 
 </html>

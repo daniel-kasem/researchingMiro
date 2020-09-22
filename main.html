@@ -21,7 +21,7 @@
     miro.onReady(() => {
       miro.initialize({
         extensionPoints: {
-          bottomBar: {
+          bottomBar: async () => {
             title: 'Asteroid sticker',
             svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
             onClick: () => {
@@ -33,7 +33,7 @@
       })
     })
 
-    function newAsteroidSticker() {
+    async function newAsteroidSticker() {
       let sticker = (await miro.board.widgets.create({
         type: 'sticker',
         text: 'Asteroid!'
@@ -51,7 +51,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 23</span>
+  <span>Confirm changes to main.html - 24</span>
 </body>
 
 </html>

@@ -24,6 +24,31 @@
         "type": "image",
         "url": "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png"
       }))[0]
+      await miro.board.widgets.create(
+        stickers.map((sticker) => ({
+          type: 'shape',
+          text: 'Type here :)',
+          x: sticker.x,
+          y: sticker.y,
+          width: sticker.bounds.width,
+          height: sticker.bounds.height,
+          style: {
+            fontFamily: 'Permanent',
+            fontSize: 14,
+            // allowed values:
+            //  "rectangle", "circle", "triangle", "rounded_rectangle", "rhombus", 
+            //  "callout", "parallelogram", "star", "arrow", "arrow_left", "pentagon", 
+            //  "hexagon", "octagon", "trapeze", "predefined_process",
+            //  "arrow_left_right", "cloud", "brace_left", "brace_right", "cross", "barrel"
+            shapeType: 'rectangle', // default: "rectangle"
+            // allowed values: "center", "right", "left"
+            textAlign: 'center', // default: center
+            // allowed values: "middle", "bottom", "top"
+            textAlignVertical: 'middle', // default: "middle"
+            textColor: '#1a1a1a' // default: "#1a1a1a"
+          }
+        })),
+      )
       await miro.board.viewport.zoomToObject(sticker)
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
@@ -32,7 +57,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 26</span>
+  <span>Confirm changes to main.html - 27</span>
 </body>
 
 </html>

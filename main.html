@@ -21,10 +21,10 @@
     miro.onReady(() => {
       miro.initialize({
         extensionPoints: {
-          bottomBar: async () => {
+          bottomBar: {
             title: 'Asteroid sticker',
             svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
-            onClick: () => {
+            onClick: async () => {
               //alert('Hi!')	
               newAsteroidSticker()
             }
@@ -51,7 +51,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 24</span>
+  <span>Confirm changes to main.html - 25</span>
 </body>
 
 </html>

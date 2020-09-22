@@ -24,25 +24,27 @@
         "type": "image",
         "url": "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png"
       }))[0]
+      alert(sticker.x, sticker.y);
       let textBox = (await miro.board.widgets.create({
         "type": "text",
         "text": "Type here :O",
         "x": sticker.x,
         "y": sticker.y,
         "width": sticker.bounds.width,
-        "height": sticker.bounds.height
-        /*,
-               "style": {
-                 "fontFamily": "Permanent Marker",
-                 "fontSize": "14",
-                 "shapeType": "rectangle",
-                 "textAlign": "center",
-                 "textAlignVertical": "middle",
-                 "textColor": "#1a1a1a"
-                          
-               }
-               */
+        "height": sticker.bounds.height,
+        "style": {
+          "fontFamily": "Permanent Marker",
+          "fontSize": "14",
+          "shapeType": "rectangle",
+          "textAlign": "center",
+          "textAlignVertical": "middle",
+          "textColor": "#1a1a1a"
+
+        }
+        /*
+         */
       }))[0]
+      alert(sticker.x, sticker.y);
       //await miro.board.viewport.zoomToObject(sticker)
       await miro.board.viewport.zoomToObject(textBox)
     }
@@ -52,7 +54,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 40</span>
+  <span>Confirm changes to main.html - 41</span>
 </body>
 
 </html>

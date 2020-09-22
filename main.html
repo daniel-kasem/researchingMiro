@@ -27,11 +27,11 @@
       let textBox = (await miro.board.widgets.create({
         "type": "shape",
         "text": "Type here :O",
-        "x": sticker.x
+        "x": sticker.x,
+        "y": sticker.y,
+        "width": sticker.bounds.width,
+        "height": sticker.bounds.height
         /*,
-               "y": sticker.y,
-               "width": sticker.bounds.width,
-               "height": sticker.bounds.height,
                "style": {
                  "fontFamily": "Permanent",
                  "fontSize": "14",
@@ -52,7 +52,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 38</span>
+  <span>Confirm changes to main.html - 39</span>
 </body>
 
 </html>

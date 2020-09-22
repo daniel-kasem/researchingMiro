@@ -19,39 +19,39 @@
 	}
 	*/
     miro.onReady(() => {
-          miro.initialize({
-            extensionPoints: {
-              bottomBar: {
-                title: 'Asteroid sticker',
-                svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
-                onClick: () => {
-                  //alert('Hi!')	
-                  newAsteroidSticker()
-                }
-              }
+      miro.initialize({
+        extensionPoints: {
+          bottomBar: {
+            title: 'Asteroid sticker',
+            svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
+            onClick: () => {
+              //alert('Hi!')	
+              newAsteroidSticker()
             }
-          })
+          }
         }
+      })
+    })
 
-        function newAsteroidSticker() {
-          let sticker = (await miro.board.widgets.create({
-            type: 'sticker',
-            text: 'Asteroid!'
-          }))[0]
-          await miro.board.viewport.zoomToObject(sticker)
-          await miro.board.widgets.update({
-            id: sticker.id,
-            text: 'world!',
-            style: {
-              stickerBackgroundColor: '#7ac673'
-            }
-          }) // update sticker    
+    function newAsteroidSticker() {
+      let sticker = (await miro.board.widgets.create({
+        type: 'sticker',
+        text: 'Asteroid!'
+      }))[0]
+      await miro.board.viewport.zoomToObject(sticker)
+      await miro.board.widgets.update({
+        id: sticker.id,
+        text: 'world!',
+        style: {
+          stickerBackgroundColor: '#7ac673'
         }
+      }) // update sticker    
+    }
   </script>
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 22</span>
+  <span>Confirm changes to main.html - 23</span>
 </body>
 
 </html>

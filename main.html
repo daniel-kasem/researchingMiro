@@ -26,22 +26,22 @@
       }))[0]
       let textBox = (await miro.board.widgets.create({
         "type": "shape",
-        "text": "Type here :O"
+        "text": "Type here :O",
+        "x": sticker.x
         /*,
-          "x": sticker.x,
-          "y": sticker.y,
-          "width": sticker.bounds.width,
-          "height": sticker.bounds.height,
-          "style": {
-            "fontFamily": "Permanent",
-            "fontSize": "14",
-            "shapeType": "rectangle",
-            "textAlign": "center",
-            "textAlignVertical": "middle",
-            "textColor": "#1a1a1a"
-                   
-        }
-        */
+               "y": sticker.y,
+               "width": sticker.bounds.width,
+               "height": sticker.bounds.height,
+               "style": {
+                 "fontFamily": "Permanent",
+                 "fontSize": "14",
+                 "shapeType": "rectangle",
+                 "textAlign": "center",
+                 "textAlignVertical": "middle",
+                 "textColor": "#1a1a1a"
+                          
+               }
+               */
       }))[0]
       //await miro.board.viewport.zoomToObject(sticker)
       await miro.board.viewport.zoomToObject(textBox)
@@ -52,7 +52,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 37</span>
+  <span>Confirm changes to main.html - 38</span>
 </body>
 
 </html>

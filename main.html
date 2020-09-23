@@ -42,10 +42,10 @@
       let stickerHeight = (await sticker.bounds.height)
       let textBox = (await miro.board.widgets.create({
         "type": "text",
-        "text": "                 Type here :O",
-        "x": stickerX,
+        "text": "------------Type here :O-------------",
+        "x": (stickerX + 50),
         "y": stickerY,
-        "width": stickerWidth
+        "width": (stickerWidth + 50)
       }))[0]
       //await miro.board.viewport.zoomToObject(sticker)
       /*

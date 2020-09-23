@@ -44,13 +44,10 @@
       //let showMeWH = (await alert(stickerWidth, stickerHeight))
       let textBox = (await miro.board.widgets.create({
         "type": "text",
+        "text": "Type here :O",
         "x": stickerX,
         "y": stickerY,
-        "width": stickerWidth,
-        "style": {
-          "fontFamily": "Permanent Marker"
-        },
-        "text": "Type here :O"
+        "width": stickerWidth
         /*"fontFamily": "Permanent Marker",
         "fontSize": 14,
         "textAlign": "center",
@@ -60,6 +57,9 @@
       //alert(stickerX + " " + stickerY)
       //alert(stickerWidth + " " + stickerHeight)
       //await miro.board.viewport.zoomToObject(sticker)
+      textbox.style = {
+        "fontFamily": "Permanent Marker"
+      }
       await miro.board.viewport.zoomToObject(textBox)
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
@@ -68,7 +68,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 58</span>
+  <span>Confirm changes to main.html - 59</span>
 </body>
 
 </html>

@@ -13,9 +13,9 @@
         extensionPoints: {
           bottomBar: {
             title: 'Asteroid sticker',
-            svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
+            svgIcon: '<circle xmlns="http://www.w3.org/2000/svg" fill="#ff8659" cx="167" cy="386" r="15" />'
+            //svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
             onClick: async () => {
-              //alert('Hi!')	
               newAsteroidSticker()
             }
           }
@@ -42,15 +42,9 @@
       let stickerHeight = (await sticker.bounds.height)
       let textBox = (await miro.board.widgets.create({
         "type": "text",
-        //"text": "Type here :O",
         "x": stickerX,
         "y": stickerY,
         "width": stickerWidth
-        /*"fontFamily": "Permanent Marker",
-        "fontSize": 14,
-        "textAlign": "center",
-        "textColor": "#1a1a1a"        
-        */
       }))[0]
       //await miro.board.viewport.zoomToObject(sticker)
       textBox.style = {
@@ -69,7 +63,11 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 63</span>
+  <span>Confirm changes to main.html - 64</span>
+  <div>
+    Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
+      href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+  </div>
 </body>
 
 </html>

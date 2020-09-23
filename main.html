@@ -56,9 +56,13 @@
       //miro.board.selection.selectWidgets(newGroup)
       miro.board.selection.selectWidgets([sticker, textBox])
       const waitOneSec = () => new Promise(r => setTimeout(r, 1000))
+      alert("...")
       await waitOneSec()
+      alert("one sec")
       document.getElementById('group-horiz').click()
       //document.getElementsByClassName('cm-custom-cm-group-group').click()
+
+      /*
       window.dispatchEvent(new KeyboardEvent('keypress', {
         'key': KeyboardEvent.ctrlKey
       }));
@@ -72,7 +76,7 @@
         'key': 'g'
       }));
       //await miro.board.viewport.zoomToObject(textBox)
-
+      */
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
     //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
@@ -80,7 +84,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 79</span>
+  <span>Confirm changes to main.html - 80</span>
 </body>
 
 </html>

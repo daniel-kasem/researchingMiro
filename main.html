@@ -24,18 +24,21 @@
     })
 
     async function newAsteroidSticker() {
+      //derive xy of new sticker
       currentSticker_X += stickerOffset
       currentSticker_Y += stickerOffset
       stickerCount += 1
       if (stickerCount % 4 === 0) {
         currentSticker_Y = stickerOffset
       }
+      //create new sticker
       let sticker = (await miro.board.widgets.create({
         "type": "image",
         "url": "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png",
         "x": currentSticker_X,
         "y": currentSticker_Y
       }))[0]
+      //create new text box inside sticker
       let stickerX = (await sticker.x)
       let stickerY = (await sticker.y)
       let stickerWidth = (await sticker.bounds.width)
@@ -47,17 +50,23 @@
         "y": stickerY,
         "width": stickerWidth
       }))[0]
-      //await miro.board.viewport.zoomToObject(sticker)
-      /*
-      textBox.style = {
-        "fontFamily": "Permanent Marker",
-        "fontSize": 14,
-        "textAlign": "center",
-        "textColor": "#1a1a1a"
-      }
-      */
-      miro.board.widgets.update(textBox)
+      //group sticker and text box
+      let newGroup = await miro.board.widgets.get(sticker, textbox)
+      miro.board.selection.selectWidgets(newGroup)
+      window.dispatchEvent(new KeyboardEvent('keypress', {
+        'key': ctrlKey
+      }));
+      window.dispatchEvent(new KeyboardEvent('keypress', {
+        'key': 'g'
+      }));
+      window.dispatchEvent(new KeyboardEvent('keyup', {
+        'key': ctrlKey
+      }));
+      window.dispatchEvent(new KeyboardEvent('keyup', {
+        'key': 'g'
+      }));
       await miro.board.viewport.zoomToObject(textBox)
+
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
     //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
@@ -65,7 +74,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 67</span>
+  <span>Confirm changes to main.html - 68</span>
 </body>
 
 </html>

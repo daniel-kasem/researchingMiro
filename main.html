@@ -56,10 +56,12 @@
       //miro.board.selection.selectWidgets(newGroup)
       miro.board.selection.selectWidgets([sticker, textBox])
       const waitOneSec = () => new Promise(r => setTimeout(r, 1000))
-      alert("...")
+      //alert("...")
       await waitOneSec()
-      alert("one sec")
-      document.getElementById('group-horiz').click()
+      //alert("one sec")
+      //document.getElementById('group-horiz').click()
+      let groupButton = () => new Promise(document.getElementById('group-horiz')).then(groupButton.click())
+
       //document.getElementsByClassName('cm-custom-cm-group-group').click()
 
       /*
@@ -84,7 +86,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 80</span>
+  <span>Confirm changes to main.html - 81</span>
 </body>
 
 </html>

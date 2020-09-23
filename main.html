@@ -52,34 +52,34 @@
       }))[0]
       //group sticker and text box
 
-      let newGroup = await miro.board.widgets.get([sticker, textBox])
+      //let newGroup = await miro.board.widgets.get([sticker, textBox])
       //miro.board.selection.selectWidgets(newGroup)
       miro.board.selection.selectWidgets([sticker, textBox])
-      const waitOneSec = () => new Promise(r => setTimeout(r, 1000))
+      //const waitOneSec = () => new Promise(r => setTimeout(r, 1000))
       //alert("...")
-      await waitOneSec()
+      //await waitOneSec()
       //alert("one sec")
       //document.getElementById('group-horiz').click()
-      let groupButton = () => new Promise(document.getElementById('group-horiz')).then(groupButton.click())
-      let elementExists = document.getElementById("group-horiz");
-      alert(elementExists)
+      //let groupButton = () => new Promise(document.getElementById('group-horiz')).then(groupButton.click())
+      //let elementExists = document.getElementById("group-horiz");
+      //let elementExists = window.getElementById("group-horiz");
+      //alert(elementExists)
       //document.getElementsByClassName('cm-custom-cm-group-group').click()
 
-      /*
+
       window.dispatchEvent(new KeyboardEvent('keypress', {
-        'key': KeyboardEvent.ctrlKey
+        'keyCode': 112
       }));
       window.dispatchEvent(new KeyboardEvent('keypress', {
         'key': 'g'
       }));
       window.dispatchEvent(new KeyboardEvent('keyup', {
-        'key': KeyboardEvent.ctrlKey
+        'keyCode': 112
       }));
       window.dispatchEvent(new KeyboardEvent('keyup', {
         'key': 'g'
       }));
-      //await miro.board.viewport.zoomToObject(textBox)
-      */
+      await miro.board.viewport.zoomToObject(textBox)
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
     //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
@@ -87,7 +87,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 82</span>
+  <span>Confirm changes to main.html - 83</span>
 </body>
 
 </html>

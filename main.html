@@ -52,9 +52,9 @@
       }))[0]
       //group sticker and text box
 
-      //let newGroup = await miro.board.widgets.get(sticker, textBox)
+      let newGroup = await miro.board.widgets.get([sticker, textBox])
       //miro.board.selection.selectWidgets(newGroup)
-      miro.board.selection.selectWidgets(sticker, textBox)
+      miro.board.selection.selectWidgets([sticker, textBox])
       window.dispatchEvent(new KeyboardEvent('keypress', {
         'key': KeyboardEvent.ctrlKey
       }));
@@ -76,7 +76,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 72</span>
+  <span>Confirm changes to main.html - 73</span>
 </body>
 
 </html>

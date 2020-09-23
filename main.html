@@ -38,10 +38,8 @@
       }))[0]
       let stickerX = (await sticker.x)
       let stickerY = (await sticker.y)
-      //let showMeXY = (await alert(stickerX, stickerY))
       let stickerWidth = (await sticker.bounds.width)
       let stickerHeight = (await sticker.bounds.height)
-      //let showMeWH = (await alert(stickerWidth, stickerHeight))
       let textBox = (await miro.board.widgets.create({
         "type": "text",
         //"text": "Type here :O",
@@ -54,8 +52,6 @@
         "textColor": "#1a1a1a"        
         */
       }))[0]
-      //alert(stickerX + " " + stickerY)
-      //alert(stickerWidth + " " + stickerHeight)
       //await miro.board.viewport.zoomToObject(sticker)
       textBox.style = {
         "fontFamily": "Permanent Marker",
@@ -73,7 +69,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 62</span>
+  <span>Confirm changes to main.html - 63</span>
 </body>
 
 </html>

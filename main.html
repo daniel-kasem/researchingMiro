@@ -66,15 +66,17 @@
       //alert(elementExists)
       //document.getElementsByClassName('cm-custom-cm-group-group').click()
 
-
+      //document.getElementById("todo").dispatchEvent(new MouseEvent("click", {ctrlKey: true}));
       window.dispatchEvent(new KeyboardEvent('keypress', {
-        'keyCode': 112
+        //'keyCode': 112
+        'ctrlKey': true
       }));
       window.dispatchEvent(new KeyboardEvent('keypress', {
         'key': 'g'
       }));
       window.dispatchEvent(new KeyboardEvent('keyup', {
-        'keyCode': 112
+        //'keyCode': 112
+        'ctrlKey': true
       }));
       window.dispatchEvent(new KeyboardEvent('keyup', {
         'key': 'g'
@@ -87,7 +89,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 83</span>
+  <span>Confirm changes to main.html - 84</span>
 </body>
 
 </html>

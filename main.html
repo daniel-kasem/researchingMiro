@@ -54,8 +54,10 @@
 
       let newGroup = await miro.board.widgets.get([sticker, textBox])
       //miro.board.selection.selectWidgets(newGroup)
-      await miro.board.selection.selectWidgets([sticker, textBox])
-      await document.getElementById('group-horiz').click()
+      miro.board.selection.selectWidgets([sticker, textBox])
+      const waitOneSec = () => new Promise(r => setTimeout(r, 1000))
+      await waitOneSec()
+      document.getElementById('group-horiz').click()
       //document.getElementsByClassName('cm-custom-cm-group-group').click()
       window.dispatchEvent(new KeyboardEvent('keypress', {
         'key': KeyboardEvent.ctrlKey
@@ -78,7 +80,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 78</span>
+  <span>Confirm changes to main.html - 79</span>
 </body>
 
 </html>

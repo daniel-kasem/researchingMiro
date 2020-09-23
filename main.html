@@ -54,13 +54,13 @@
       let newGroup = await miro.board.widgets.get(sticker, textBox)
       miro.board.selection.selectWidgets(newGroup)
       window.dispatchEvent(new KeyboardEvent('keypress', {
-        'key': ctrlKey
+        'key': KeyboardEvent.ctrlKey
       }));
       window.dispatchEvent(new KeyboardEvent('keypress', {
         'key': 'g'
       }));
       window.dispatchEvent(new KeyboardEvent('keyup', {
-        'key': ctrlKey
+        'key': KeyboardEvent.ctrlKey
       }));
       window.dispatchEvent(new KeyboardEvent('keyup', {
         'key': 'g'
@@ -74,7 +74,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 69</span>
+  <span>Confirm changes to main.html - 70</span>
 </body>
 
 </html>

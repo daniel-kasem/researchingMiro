@@ -68,22 +68,22 @@
 
       setTimeout(function () {
         window.dispatchEvent(new KeyboardEvent('keydown', {
-          'keyCode': 17
-          //'ctrlKey': true
+          //'keyCode': '71'
+          'key': 'Control'
         }));
         window.dispatchEvent(new KeyboardEvent('keydown', {
-          'keyCode': '71'
-          //'key': 'g'
+          //'keyCode': '71'
+          'key': 'g'
         }));
         window.dispatchEvent(new KeyboardEvent('keyup', {
-          'keyCode': 17
-          //'ctrlKey': true
+          //'keyCode': 17
+          'key': 'Control'
         }));
         window.dispatchEvent(new KeyboardEvent('keyup', {
-          'keyCode': '71'
-          //'key': 'g'        
+          //'keyCode': '71'
+          'key': 'g'
         }));
-        alert('keys dispatch');
+        alert('keys dispatched');
       }, 5000);
       await miro.board.viewport.zoomToObject(textBox)
     }
@@ -93,7 +93,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 87</span>
+  <span>Confirm changes to main.html - 88</span>
 </body>
 
 </html>

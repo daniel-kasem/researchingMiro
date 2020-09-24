@@ -67,19 +67,21 @@
       //document.getElementsByClassName('cm-custom-cm-group-group').click()
 
       //document.getElementById("todo").dispatchEvent(new MouseEvent("click", {ctrlKey: true}));
-      window.dispatchEvent(new KeyboardEvent('keypress', {
-        //'keyCode': 112
-        'ctrlKey': true
+      window.dispatchEvent(new KeyboardEvent('keydown', {
+        'keyCode': 17
+        //'ctrlKey': true
       }));
-      window.dispatchEvent(new KeyboardEvent('keypress', {
-        'key': 'g'
-      }));
-      window.dispatchEvent(new KeyboardEvent('keyup', {
-        //'keyCode': 112
-        'ctrlKey': true
+      window.dispatchEvent(new KeyboardEvent('keydown', {
+        'keyCode': '71'
+        //'key': 'g'
       }));
       window.dispatchEvent(new KeyboardEvent('keyup', {
-        'key': 'g'
+        'keyCode': 17
+        //'ctrlKey': true
+      }));
+      window.dispatchEvent(new KeyboardEvent('keyup', {
+        'keyCode': '71'
+        //'key': 'g'        
       }));
       await miro.board.viewport.zoomToObject(textBox)
     }
@@ -89,7 +91,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 84</span>
+  <span>Confirm changes to main.html - 85</span>
 </body>
 
 </html>

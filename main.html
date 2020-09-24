@@ -4,25 +4,7 @@
 <head>
   <script type="text/javascript" src="https://miro.com/app/static/sdk.1.1.js"></script>
   <script type="text/javascript">
-    //define initial position variables of first sticker/textbox to offset subsequent ones
-    let currentSticker_X = 0
-    let currentSticker_Y = 0
-    let stickerCount = 0
-    let stickerOffset = 50
-    //define functions to continually check for Group icon to load before clicking it later
-    function rafAsync() {
-      return new Promise(resolve => {
-        requestAnimationFrame(resolve); //faster than set time out
-      });
-    }
-    async function checkElement(selector) {
-      const querySelector = document.querySelector(selector);
-      while (querySelector === null) {
-        await rafAsync()
-      }
-      return querySelector;
-    }
-
+    //add buttons to bottomBar and define icon and click behavior
     miro.onReady(() => {
       miro.initialize({
         extensionPoints: {
@@ -37,53 +19,74 @@
       })
     })
 
-    async function newAsteroidSticker() {
-      //derive xy of new sticker
-      currentSticker_X += stickerOffset
-      currentSticker_Y += stickerOffset
-      stickerCount += 1
-      if (stickerCount % 4 === 0) {
-        currentSticker_Y = stickerOffset
-      }
-      //create new sticker
-      let sticker = (await miro.board.widgets.create({
-        "type": "image",
-        "url": "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png",
-        "x": currentSticker_X,
-        "y": currentSticker_Y
-      }))[0]
-      //create new text box inside sticker
-      let stickerX = (await sticker.x)
-      let stickerY = (await sticker.y)
-      let stickerWidth = (await sticker.bounds.width)
-      let stickerHeight = (await sticker.bounds.height)
-      let textBox = (await miro.board.widgets.create({
-        "type": "text",
-        "text": "------------Type here :O-------------",
-        "x": stickerX,
-        "y": stickerY,
-        "width": stickerWidth
-      }))[0]
-      //group sticker and text box
-      miro.board.selection.selectWidgets([sticker, textBox])
-      await miro.board.viewport.zoomToObject(textBox)
-
-      //wait for context menu to load now that widgets have been selected       
-      checkElement('.cm-custom-cm-group') //use whichever selector you want
-        .then((element) => {
-          console.info(element);
-          //Do whatever you want now the element is there
-          document.querySelector('.cm-custom-cm-group').click()
-          //element.click()
-        });
+    //define functions to check for buttons to load before clicking them
+    // callback executed when Group button was found
+    function clickButton(button) {
+      document.querySelector(button).click()
     }
-    //https://daniel-kasem.github.io/researchingMiro/main.html
-    //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
+
+    // set up the mutation observer
+    var observer = new MutationObserver(function (mutations, me) {
+      // `mutations` is an array of mutations that occurred
+      // `me` is the MutationObserver instance
+      var button = document.querySelector('.cm-custom-cm-group');
+      if (button) {
+        clickButton(button);
+        me.disconnect(); // stop observing
+        return;
+      }
+    });
+
+    //define initial position variables of first sticker/textbox to offset subsequent ones
+    let currentSticker_X = 0
+    let currentSticker_Y = 0
+    let stickerCount = 0
+    let stickerOffset = 50
+
+    async function newAsteroidSticker() {
+        //derive xy of new sticker
+        currentSticker_X += stickerOffset
+        currentSticker_Y += stickerOffset
+        stickerCount += 1
+        if (stickerCount % 4 === 0) {
+          currentSticker_Y = stickerOffset
+        }
+        //create new sticker
+        let sticker = (await miro.board.widgets.create({
+          "type": "image",
+          "url": "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png",
+          "x": currentSticker_X,
+          "y": currentSticker_Y
+        }))[0]
+        //create new text box inside sticker
+        let stickerX = (await sticker.x)
+        let stickerY = (await sticker.y)
+        let stickerWidth = (await sticker.bounds.width)
+        let stickerHeight = (await sticker.bounds.height)
+        let textBox = (await miro.board.widgets.create({
+          "type": "text",
+          "text": "------------Type here :O-------------",
+          "x": stickerX,
+          "y": stickerY,
+          "width": stickerWidth
+        }))[0]
+        //group sticker and text box
+        miro.board.selection.selectWidgets([sticker, textBox])
+        await miro.board.viewport.zoomToObject(textBox)
+
+        // start observing - will click Group button once context menu loads
+        observer.observe(document, {
+          childList: true,
+          subtree: true
+        });
+
+        //https://daniel-kasem.github.io/researchingMiro/main.html
+        //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
   </script>
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 95</span>
+  <span>Confirm changes to main.html - 96</span>
 </body>
 
 </html>

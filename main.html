@@ -53,39 +53,11 @@
       //group sticker and text box
       miro.board.selection.selectWidgets([sticker, textBox])
 
-      //const waitTenSec = () => new Promise(r => setTimeout(r, 10000))
-      //alert("...")
-      //await waitTenSec()
-      //alert("one sec")
-      //document.getElementById('group-horiz').click()
-      //let groupButton = () => new Promise(document.getElementById('group-horiz')).then(groupButton.click())
-      //let elementExists = document.getElementById("group-horiz");
-      //let elementExists = window.getElementById("group-horiz");
-      //alert(elementExists)
-
-      //document.querySelectorAll('.cm-custom-cm-group')[0].click
-
-      //document.getElementById("todo").dispatchEvent(new MouseEvent("click", {ctrlKey: true}));
-      setTimeout(function () {
-        window.dispatchEvent(new KeyboardEvent('keydown', {
-          //'keyCode': '71'
-          'key': 'Control'
-        }));
-        window.dispatchEvent(new KeyboardEvent('keydown', {
-          //'keyCode': '71'
-          'key': 'g'
-        }));
-        window.dispatchEvent(new KeyboardEvent('keyup', {
-          //'keyCode': 17
-          'key': 'Control'
-        }));
-        window.dispatchEvent(new KeyboardEvent('keyup', {
-          //'keyCode': '71'
-          'key': 'g'
-        }));
-        alert('keys dispatched');
-        document.querySelectorAll('.cm-custom-cm-group')[0].click()
-      }, 5000);
+      //wait for context menu to load now that widgets have been selected
+      while (!document.querySelector('.cm-custom-cm-group')) {
+        await new Promise(r => setTimeout(r, 500));
+      }
+      document.querySelectorAll('.cm-custom-cm-group')[0].click()
       await miro.board.viewport.zoomToObject(textBox)
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
@@ -94,7 +66,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 91</span>
+  <span>Confirm changes to main.html - 92</span>
 </body>
 
 </html>

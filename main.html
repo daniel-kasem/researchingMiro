@@ -66,6 +66,7 @@
       }))[0]
       //group sticker and text box
       miro.board.selection.selectWidgets([sticker, textBox])
+      await miro.board.viewport.zoomToObject(textBox)
 
       //wait for context menu to load now that widgets have been selected       
       checkElement('.cm-custom-cm-group') //use whichever selector you want
@@ -75,7 +76,6 @@
           document.querySelector('.cm-custom-cm-group').click()
           //element.click()
         });
-      await miro.board.viewport.zoomToObject(textBox)
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
     //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
@@ -83,7 +83,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 94</span>
+  <span>Confirm changes to main.html - 95</span>
 </body>
 
 </html>

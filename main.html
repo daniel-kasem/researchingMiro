@@ -62,10 +62,10 @@
       //let elementExists = document.getElementById("group-horiz");
       //let elementExists = window.getElementById("group-horiz");
       //alert(elementExists)
-      //document.getElementsByClassName('cm-custom-cm-group-group').click()
+
+      document.querySelectorAll('.cm-custom-cm-group')[0].click
 
       //document.getElementById("todo").dispatchEvent(new MouseEvent("click", {ctrlKey: true}));
-
       setTimeout(function () {
         window.dispatchEvent(new KeyboardEvent('keydown', {
           //'keyCode': '71'
@@ -84,6 +84,7 @@
           'key': 'g'
         }));
         alert('keys dispatched');
+        document.querySelectorAll('.cm-custom-cm-group')[0].click
       }, 5000);
       await miro.board.viewport.zoomToObject(textBox)
     }
@@ -93,7 +94,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 88</span>
+  <span>Confirm changes to main.html - 89</span>
 </body>
 
 </html>

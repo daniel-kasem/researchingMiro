@@ -54,10 +54,25 @@
       miro.board.selection.selectWidgets([sticker, textBox])
 
       //wait for context menu to load now that widgets have been selected
-      while (!document.querySelector('.cm-custom-cm-group')) {
-        await new Promise(r => setTimeout(r, 500));
+      function rafAsync() {
+        return new Promise(resolve => {
+          requestAnimationFrame(resolve); //faster than set time out
+        });
       }
-      document.querySelectorAll('.cm-custom-cm-group')[0].click()
+
+      function checkElement(selector) {
+        if (document.querySelector(selector) === null) {
+          return rafAsync().then(() => checkElement(selector));
+        } else {
+          return Promise.resolve(true);
+        }
+      }
+      checkElement('.cm-custom-cm-group') //use whichever selector you want
+        .then((element) => {
+          console.info(element);
+          //Do whatever you want now the element is there
+          document.querySelectorAll('.cm-custom-cm-group')[0].click()
+        });
       await miro.board.viewport.zoomToObject(textBox)
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
@@ -66,7 +81,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 92</span>
+  <span>Confirm changes to main.html - 93</span>
 </body>
 
 </html>

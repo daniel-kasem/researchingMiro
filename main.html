@@ -51,13 +51,11 @@
         "width": stickerWidth
       }))[0]
       //group sticker and text box
-
-      //let newGroup = await miro.board.widgets.get([sticker, textBox])
-      //miro.board.selection.selectWidgets(newGroup)
       miro.board.selection.selectWidgets([sticker, textBox])
-      //const waitOneSec = () => new Promise(r => setTimeout(r, 1000))
+
+      //const waitTenSec = () => new Promise(r => setTimeout(r, 10000))
       //alert("...")
-      //await waitOneSec()
+      //await waitTenSec()
       //alert("one sec")
       //document.getElementById('group-horiz').click()
       //let groupButton = () => new Promise(document.getElementById('group-horiz')).then(groupButton.click())
@@ -67,22 +65,25 @@
       //document.getElementsByClassName('cm-custom-cm-group-group').click()
 
       //document.getElementById("todo").dispatchEvent(new MouseEvent("click", {ctrlKey: true}));
-      window.dispatchEvent(new KeyboardEvent('keydown', {
-        'keyCode': 17
-        //'ctrlKey': true
-      }));
-      window.dispatchEvent(new KeyboardEvent('keydown', {
-        'keyCode': '71'
-        //'key': 'g'
-      }));
-      window.dispatchEvent(new KeyboardEvent('keyup', {
-        'keyCode': 17
-        //'ctrlKey': true
-      }));
-      window.dispatchEvent(new KeyboardEvent('keyup', {
-        'keyCode': '71'
-        //'key': 'g'        
-      }));
+
+      setTimeout(function () {
+        window.dispatchEvent(new KeyboardEvent('keydown', {
+          'keyCode': 17
+          //'ctrlKey': true
+        }));
+        window.dispatchEvent(new KeyboardEvent('keydown', {
+          'keyCode': '71'
+          //'key': 'g'
+        }));
+        window.dispatchEvent(new KeyboardEvent('keyup', {
+          'keyCode': 17
+          //'ctrlKey': true
+        }));
+        window.dispatchEvent(new KeyboardEvent('keyup', {
+          'keyCode': '71'
+          //'key': 'g'        
+        }));
+      }, 5000);
       await miro.board.viewport.zoomToObject(textBox)
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
@@ -91,7 +92,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 85</span>
+  <span>Confirm changes to main.html - 86</span>
 </body>
 
 </html>

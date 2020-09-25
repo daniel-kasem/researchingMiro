@@ -12,15 +12,15 @@
 
     miro.onReady(() => {
 
-      // select the target node
-      var target = document.querySelector('.canvasContextMenu');
+      // Select the node that will be observed for mutations
+      const targetNode = document.getElementById('some-id');
 
-      // configuration of the observer:
-      var config = {
+      // Options for the observer (which mutations to observe)
+      const config = {
         attributes: true,
         childList: true,
-        characterData: true
-      }
+        subtree: true
+      };
 
       // Callback function to execute when mutations are observed
       const callback = function (mutationsList, observer) {
@@ -92,7 +92,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 126</span>
+  <span>Confirm changes to main.html - 127</span>
 </body>
 
 </html>

@@ -9,19 +9,6 @@
     let currentSticker_Y = 0
     let stickerCount = 0
     let stickerOffset = 50
-    //define functions to continually check for Group icon to load before clicking it later
-    function rafAsync() {
-      return new Promise(resolve => {
-        requestAnimationFrame(resolve); //faster than set time out
-      });
-    }
-    async function checkElement(selector) {
-      const querySelector = document.querySelector(selector);
-      while (querySelector === null) {
-        await rafAsync()
-      }
-      return querySelector;
-    }
 
     miro.onReady(() => {
       miro.initialize({
@@ -38,6 +25,21 @@
     })
 
     async function newAsteroidSticker() {
+      //define functions to continually check for Group icon to load before clicking it later
+      function rafAsync() {
+        return new Promise(resolve => {
+          requestAnimationFrame(resolve); //faster than set time out
+        });
+      }
+
+      async function checkElement(selector) {
+        const querySelector = document.querySelector(selector);
+        while (querySelector === null) {
+          await rafAsync()
+        }
+        return querySelector;
+      }
+
       //derive xy of new sticker
       currentSticker_X += stickerOffset
       currentSticker_Y += stickerOffset
@@ -53,10 +55,10 @@
         "y": currentSticker_Y
       }))[0]
       //create new text box inside sticker
-      let stickerX = (await sticker.x)
-      let stickerY = (await sticker.y)
-      let stickerWidth = (await sticker.bounds.width)
-      let stickerHeight = (await sticker.bounds.height)
+      let stickerX = sticker.x
+      let stickerY = sticker.y
+      let stickerWidth = sticker.bounds.width
+      let stickerHeight = sticker.bounds.height
       let textBox = (await miro.board.widgets.create({
         "type": "text",
         "text": "------------Type here :O-------------",
@@ -66,7 +68,7 @@
       }))[0]
       //group sticker and text box
       miro.board.selection.selectWidgets([sticker, textBox])
-      await miro.board.viewport.zoomToObject(textBox)
+      miro.board.viewport.zoomToObject(textBox)
 
       //wait for context menu to load now that widgets have been selected       
       checkElement('.cm-custom-cm-group') //use whichever selector you want
@@ -83,7 +85,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 95</span>
+  <span>Confirm changes to main.html - 110</span>
 </body>
 
 </html>

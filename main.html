@@ -21,12 +21,6 @@
 
     //define functions to check for buttons to load before clicking them
     //deleted mutionat obsverer example... got anything else?
-    function clickButton() {
-      let pause = "pause"
-      if (document.getElementById("group-horiz") != null) {
-        document.getElementById("group-horiz").click()
-      }
-    }
 
     //define initial position variables of first sticker/textbox to offset subsequent ones
     let currentSticker_X = 0
@@ -35,6 +29,13 @@
     let stickerOffset = 50
 
     async function newAsteroidSticker() {
+
+      function clickButton() {
+        let pause = "pause"
+        if (document.getElementById("group-horiz") != null) {
+          document.getElementById("group-horiz").click()
+        }
+      }
       //derive xy of new sticker
       currentSticker_X += stickerOffset
       currentSticker_Y += stickerOffset
@@ -71,7 +72,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 103</span>
+  <span>Confirm changes to main.html - 104</span>
 </body>
 
 </html>

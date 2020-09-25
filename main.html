@@ -11,21 +11,43 @@
     let stickerOffset = 50
 
     miro.onReady(() => {
+
+      // select the target node
+      var target = document.querySelector('.canvasContextMenu');
+
+      // configuration of the observer:
+      var config = {
+        attributes: true,
+        childList: true,
+        characterData: true
+      }
+
+      // Callback function to execute when mutations are observed
+      const callback = function (mutationsList, observer) {
+        alert('mutation observed')
+        // Use traditional 'for loops' for IE 11
+        for (const mutation of mutationsList) {
+          if (mutation.type === 'attributes') {
+            document.querySelector('.cm-custom-cm-group').click()
+            //stop observing this instance
+            observer.disconnect();
+          }
+        }
+      };
+
+      // Create an observer instance linked to the callback function
+      const observer = new MutationObserver(callback);
+
       miro.initialize({
         extensionPoints: {
           bottomBar: {
             title: 'Asteroid sticker',
             svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
             onClick: async () => {
-              let newSticker = new Promise((resolve, reject) => {
-                newAsteroidSticker()
-              })
-              newSticker.then(
-                //controller37.onClickInternal('mousedown')
-                setTimeout(alert('times up'), 5000)
-                //document.querySelector('.cm-custom-cm-group').click()
-                //let pause = "pause"
-              )
+              // Start observing the target node for configured mutations
+              observer.observe(targetNode, config);
+              newAsteroidSticker()
+              //document.querySelector('.cm-custom-cm-group').click()              
             }
           }
         }
@@ -70,7 +92,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 125</span>
+  <span>Confirm changes to main.html - 126</span>
 </body>
 
 </html>

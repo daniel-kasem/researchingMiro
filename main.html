@@ -29,6 +29,7 @@
       function rafAsync() {
         return new Promise(resolve => {
           requestAnimationFrame(resolve); //faster than set time out
+
         });
       }
 
@@ -78,6 +79,13 @@
           document.querySelector('.cm-custom-cm-group').click()
           //element.click()
         });
+      //at this point I'll try anything
+      var checkExist = setInterval(function () {
+        if (document.querySelector('.cm-custom-cm-group').length) {
+          console.log("Exists!");
+          clearInterval(checkExist);
+        }
+      }, 100); // check every 100ms        
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
     //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
@@ -85,7 +93,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 110</span>
+  <span>Confirm changes to main.html - 111</span>
 </body>
 
 </html>

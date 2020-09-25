@@ -28,6 +28,16 @@
     let stickerCount = 0
     let stickerOffset = 50
 
+    function clickButton() {
+      setTimeout(function () {
+        alert("Hello")
+        let pause = "pause"
+        if (document.getElementById("group-horiz") != null) {
+          document.getElementById("group-horiz").click()
+        }
+      }, 3000);
+    }
+
     async function newAsteroidSticker() {
       //derive xy of new sticker
       currentSticker_X += stickerOffset
@@ -58,15 +68,7 @@
       //group sticker and text box
       miro.board.selection.selectWidgets([sticker, textBox])
       await miro.board.viewport.zoomToObject(textBox)
-
-      setTimeout(function () {
-        alert("Hello")
-        let pause = "pause"
-        if (document.getElementById("group-horiz") != null) {
-          document.getElementById("group-horiz").click()
-        }
-      }, 3000);
-
+      clickButton()
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
     //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
@@ -74,7 +76,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 100</span>
+  <span>Confirm changes to main.html - 101</span>
 </body>
 
 </html>

@@ -17,7 +17,7 @@
             title: 'Asteroid sticker',
             svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
             onClick: async () => {
-              let newSticker = New new Promise((resolve, reject) => {
+              let newSticker = new Promise((resolve, reject) => {
                 newAsteroidSticker()
               })
               newSticker.then(

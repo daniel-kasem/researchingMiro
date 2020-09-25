@@ -17,43 +17,19 @@
             title: 'Asteroid sticker',
             svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
             onClick: async () => {
-              newAsteroidSticker(groupSelection)
+              let newSticker = New new Promise((resolve, reject) => {
+                newAsteroidSticker()
+              })
+              newSticker.then(
+                document.querySelector('.cm-custom-cm-group').click()
+              )
             }
           }
         }
       })
     })
 
-    function groupSelection() {
-      //define functions to continually check for Group icon to load before clicking it later
-
-      function rafAsync() {
-        return new Promise(resolve => {
-          requestAnimationFrame(resolve); //faster than set time out
-
-        });
-      }
-
-      async function checkElement(selector) {
-        const querySelector = document.querySelector(selector);
-        while (querySelector === null) {
-          await rafAsync()
-        }
-        return querySelector;
-      }
-
-      //Check that Group button has loaded
-      checkElement('.cm-custom-cm-group')
-        .then((element) => {
-          //Group new sticker and text box so they move together
-          document.querySelector('.cm-custom-cm-group').click()
-        });
-
-      setTimeout(document.querySelector('.cm-custom-cm-group').click(), 3000)
-      alert('called back');
-    }
-
-    async function newAsteroidSticker(callback) {
+    async function newAsteroidSticker() {
 
       //derive xy of new sticker based on # of previous stickers
       currentSticker_X += stickerOffset
@@ -84,8 +60,6 @@
       miro.board.selection.selectWidgets([sticker, textBox])
       miro.board.viewport.zoomToObject(textBox)
 
-      callback();
-
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
     //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
@@ -93,7 +67,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 120</span>
+  <span>Confirm changes to main.html - 121</span>
 </body>
 
 </html>

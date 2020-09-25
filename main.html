@@ -25,77 +25,68 @@
     })
 
     async function newAsteroidSticker() {
-      //define functions to continually check for Group icon to load before clicking it later
-      function rafAsync() {
-        return new Promise(resolve => {
-          requestAnimationFrame(resolve); //faster than set time out
+        //define functions to continually check for Group icon to load before clicking it later
+        function rafAsync() {
+          return new Promise(resolve => {
+            requestAnimationFrame(resolve); //faster than set time out
 
-        });
-      }
-
-      async function checkElement(selector) {
-        const querySelector = document.querySelector(selector);
-        while (querySelector === null) {
-          await rafAsync()
+          });
         }
-        return querySelector;
-      }
 
-      //derive xy of new sticker
-      currentSticker_X += stickerOffset
-      currentSticker_Y += stickerOffset
-      stickerCount += 1
-      if (stickerCount % 4 === 0) {
-        currentSticker_Y = stickerOffset
-      }
-      //create new sticker
-      let sticker = (await miro.board.widgets.create({
-        "type": "image",
-        "url": "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png",
-        "x": currentSticker_X,
-        "y": currentSticker_Y
-      }))[0]
-      //create new text box inside sticker
-      let stickerX = sticker.x
-      let stickerY = sticker.y
-      let stickerWidth = sticker.bounds.width
-      let stickerHeight = sticker.bounds.height
-      let textBox = (await miro.board.widgets.create({
-        "type": "text",
-        "text": "------------Type here :O-------------",
-        "x": stickerX,
-        "y": stickerY,
-        "width": stickerWidth
-      }))[0]
-      //group sticker and text box
-      miro.board.selection.selectWidgets([sticker, textBox])
-      miro.board.viewport.zoomToObject(textBox)
-
-      //wait for context menu to load now that widgets have been selected       
-      checkElement('.cm-custom-cm-group') //use whichever selector you want
-        .then((element) => {
-          console.info(element);
-          //Do whatever you want now the element is there
-          document.querySelector('.cm-custom-cm-group').click()
-          //element.click()
-        });
-      //at this point I'll try anything
-      var checkExist = setInterval(function () {
-        if (document.querySelector('.cm-custom-cm-group')) {
-          alert("Exists!");
-          clearInterval(checkExist);
-        } else {
-          console.log("srsly, fuck this");
+        async function checkElement(selector) {
+          const querySelector = document.querySelector(selector);
+          while (querySelector === null) {
+            await rafAsync()
+          }
+          return querySelector;
         }
-      }, 100); // check every 100ms        
-    }
-    //https://daniel-kasem.github.io/researchingMiro/main.html
-    //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
+
+        //derive xy of new sticker
+        currentSticker_X += stickerOffset
+        currentSticker_Y += stickerOffset
+        stickerCount += 1
+        if (stickerCount % 4 === 0) {
+          currentSticker_Y = stickerOffset
+        }
+        //create new sticker
+        let sticker = (await miro.board.widgets.create({
+          "type": "image",
+          "url": "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png",
+          "x": currentSticker_X,
+          "y": currentSticker_Y
+        }))[0]
+        //create new text box inside sticker
+        let stickerX = sticker.x
+        let stickerY = sticker.y
+        let stickerWidth = sticker.bounds.width
+        let stickerHeight = sticker.bounds.height
+        let textBox = (await miro.board.widgets.create({
+          "type": "text",
+          "text": "------------Type here :O-------------",
+          "x": stickerX,
+          "y": stickerY,
+          "width": stickerWidth
+        }))[0]
+        //group sticker and text box
+        miro.board.selection.selectWidgets([sticker, textBox])
+        miro.board.viewport.zoomToObject(textBox)
+
+        //wait for context menu to load now that widgets have been selected       
+        checkElement('.cm-custom-cm-group') //use whichever selector you want
+          .then((element) => {
+            console.info(element);
+            //Do whatever you want now the element is there
+            document.querySelector('.cm-custom-cm-group').click()
+            //element.click()
+          });
+
+        //https://daniel-kasem.github.io/researchingMiro/main.html
+        //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
   </script>
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 115</span>
+  <span>Confirm changes to main.html - 116</span>
 </body>
 
 </html>

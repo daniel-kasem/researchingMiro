@@ -12,7 +12,11 @@
             title: 'Asteroid sticker',
             svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
             onClick: async () => {
-              newAsteroidSticker()
+              let newGroup = await newAsteroidSticker()
+              //group sticker and text box
+              miro.board.selection.selectWidgets(newGroup)
+              miro.board.viewport.zoomToObject(newGroup[0])
+              document.getElementById("group-horiz").click()
             }
           }
         }
@@ -29,13 +33,6 @@
     let stickerOffset = 50
 
     async function newAsteroidSticker() {
-
-      function clickButton() {
-        let pause = "pause"
-        if (document.getElementById("group-horiz") != null) {
-          document.getElementById("group-horiz").click()
-        }
-      }
       //derive xy of new sticker
       currentSticker_X += stickerOffset
       currentSticker_Y += stickerOffset
@@ -51,10 +48,10 @@
         "y": currentSticker_Y
       }))[0]
       //create new text box inside sticker
-      let stickerX = (await sticker.x)
-      let stickerY = (await sticker.y)
-      let stickerWidth = (await sticker.bounds.width)
-      let stickerHeight = (await sticker.bounds.height)
+      let stickerX = (sticker.x)
+      let stickerY = (sticker.y)
+      let stickerWidth = (sticker.bounds.width)
+      let stickerHeight = (sticker.bounds.height)
       let textBox = (await miro.board.widgets.create({
         "type": "text",
         "text": "------------Type here :O-------------",
@@ -62,9 +59,8 @@
         "y": stickerY,
         "width": stickerWidth
       }))[0]
-      //group sticker and text box
-      miro.board.selection.selectWidgets([sticker, textBox])
-      await miro.board.viewport.zoomToObject(textBox).clickButton()
+
+      return [sticker, textBox]
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
     //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
@@ -72,7 +68,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 104</span>
+  <span>Confirm changes to main.html - 105</span>
 </body>
 
 </html>

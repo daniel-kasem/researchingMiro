@@ -13,6 +13,7 @@
             svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
             onClick: async () => {
               newAsteroidSticker()
+              clickButton()
             }
           }
         }
@@ -27,16 +28,6 @@
     let currentSticker_Y = 0
     let stickerCount = 0
     let stickerOffset = 50
-
-    function clickButton() {
-      setTimeout(function () {
-        alert("Hello")
-        let pause = "pause"
-        if (document.getElementById("group-horiz") != null) {
-          document.getElementById("group-horiz").click()
-        }
-      }, 3000);
-    }
 
     async function newAsteroidSticker() {
       //derive xy of new sticker
@@ -68,7 +59,13 @@
       //group sticker and text box
       miro.board.selection.selectWidgets([sticker, textBox])
       await miro.board.viewport.zoomToObject(textBox)
-      clickButton()
+    }
+
+    function clickButton() {
+      let pause = "pause"
+      if (document.getElementById("group-horiz") != null) {
+        document.getElementById("group-horiz").click()
+      }
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
     //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
@@ -76,7 +73,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 101</span>
+  <span>Confirm changes to main.html - 102</span>
 </body>
 
 </html>

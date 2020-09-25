@@ -60,8 +60,10 @@
       await miro.board.viewport.zoomToObject(textBox)
 
       setTimeout(function () {
-        document.getElementById("group-horiz").click()
         alert("Hello")
+        if (document.getElementById("group-horiz") != null) {
+          document.getElementById("group-horiz").click()
+        }
       }, 3000);
 
     }
@@ -71,7 +73,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 98</span>
+  <span>Confirm changes to main.html - 99</span>
 </body>
 
 </html>

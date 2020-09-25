@@ -20,23 +20,7 @@
     })
 
     //define functions to check for buttons to load before clicking them
-    // callback executed when Group button was found
-    function clickButton(button) {
-      document.querySelector(button).click()
-    }
-
-    // set up the mutation observer
-    var observer = new MutationObserver(function (mutations, me) {
-      // `mutations` is an array of mutations that occurred
-      // `me` is the MutationObserver instance
-      var button = document.querySelector('.cm-custom-cm-group');
-      if (button) {
-        clickButton(button);
-        me.disconnect(); // stop observing
-        return;
-      }
-    });
-
+    //deleted mutionat obsverer example... got anything else?
 
     //define initial position variables of first sticker/textbox to offset subsequent ones
     let currentSticker_X = 0
@@ -75,11 +59,10 @@
       miro.board.selection.selectWidgets([sticker, textBox])
       await miro.board.viewport.zoomToObject(textBox)
 
-      // start observing - will click Group button once context menu loads
-      observer.observe(document, {
-        childList: true,
-        subtree: true
-      });
+      setTimeout(function () {
+        document.getElementById("group-horiz").click()
+        alert("Hello")
+      }, 3000);
 
     }
     //https://daniel-kasem.github.io/researchingMiro/main.html
@@ -88,7 +71,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 97</span>
+  <span>Confirm changes to main.html - 98</span>
 </body>
 
 </html>

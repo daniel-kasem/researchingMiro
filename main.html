@@ -81,7 +81,7 @@
         });
       //at this point I'll try anything
       var checkExist = setInterval(function () {
-        if (document.querySelector('.cm-custom-cm-group').length) {
+        if (document.querySelector('.cm-custom-cm-group')) {
           console.log("Exists!");
           clearInterval(checkExist);
         }
@@ -93,7 +93,7 @@
 </head>
 
 <body>
-  <span>Confirm changes to main.html - 111</span>
+  <span>Confirm changes to main.html - 112</span>
 </body>
 
 </html>

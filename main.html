@@ -1,100 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <script
+      type="text/javascript"
+      src="https://miro.com/app/static/sdk.1.1.js"
+    ></script>
+    <script type="text/javascript">
+      //define initial position variables of first sticker/textbox to offset subsequent ones
+      let currentSticker_X = 0;
+      let currentSticker_Y = 0;
+      let stickerCount = 0;
+      let stickerOffset = 50;
 
-<head>
-  <script type="text/javascript" src="https://miro.com/app/static/sdk.1.1.js"></script>
-  <script type="text/javascript">
-    //define initial position variables of first sticker/textbox to offset subsequent ones
-    let currentSticker_X = 0
-    let currentSticker_Y = 0
-    let stickerCount = 0
-    let stickerOffset = 50
+      miro.onReady(() => {
+        miro.initialize({
+          extensionPoints: {
+            bottomBar: {
+              title: "Asteroid sticker",
+              svgIcon:
+                '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
+              onClick: async () => {
+                let newSticker = await newAsteroidSticker();
+                let newGroup = await newGroup();
+                //document.querySelector('.cm-custom-cm-group').click()
+              },
+            },
+          },
+        });
+      });
 
-    miro.onReady(() => {
+      async function newAsteroidSticker() {
+        //derive xy of new sticker based on # of previous stickers
+        currentSticker_X += stickerOffset;
+        currentSticker_Y += stickerOffset;
+        stickerCount += 1;
+        if (stickerCount % 4 === 0) {
+          currentSticker_Y = stickerOffset;
+        }
 
-      miro.initialize({
-        extensionPoints: {
-          bottomBar: {
-            title: 'Asteroid sticker',
-            svgIcon: '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
-            onClick: async () => {
-              newAsteroidSticker()
-              //document.querySelector('.cm-custom-cm-group').click()              
+        //create new sticker
+        let sticker = (
+          await miro.board.widgets.create({
+            type: "image",
+            url:
+              "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png",
+            x: currentSticker_X,
+            y: currentSticker_Y,
+          })
+        )[0];
+
+        //create new text box inside sticker
+        let textBox = (
+          await miro.board.widgets.create({
+            type: "text",
+            text: "------------Type here :O-------------",
+            x: sticker.x,
+            y: sticker.y,
+            width: sticker.bounds.width,
+          })
+        )[0];
+
+        //select new sticker and text box
+        miro.board.selection.selectWidgets([sticker, textBox]);
+        miro.board.viewport.zoomToObject(textBox);
+      }
+      //https://daniel-kasem.github.io/researchingMiro/main.html
+      //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
+
+      async function newGroup() {
+        // Select the node that will be observed for mutations
+        const targetNode = document.querySelector(".canvasContextMenu");
+
+        // Options for the observer (which mutations to observe)
+        const config = {
+          attributes: true,
+          childList: true,
+          subtree: true,
+        };
+
+        // Callback function to execute when mutations are observed
+        const callback = function (mutationsList, observer) {
+          alert("mutation observed");
+          // Use traditional 'for loops' for IE 11
+          for (const mutation of mutationsList) {
+            if (mutation.type === "attributes") {
+              alert("attribut mutation detected!");
+              document.querySelector(".cm-custom-cm-group").click();
+              //stop observing this instance
+              observer.disconnect();
             }
           }
-        }
-      })
-    })
+        };
 
-    async function newAsteroidSticker() {
+        // Create an observer instance linked to the callback function
+        const observer = new MutationObserver(callback);
 
-      //derive xy of new sticker based on # of previous stickers
-      currentSticker_X += stickerOffset
-      currentSticker_Y += stickerOffset
-      stickerCount += 1
-      if (stickerCount % 4 === 0) {
-        currentSticker_Y = stickerOffset
+        // Start observing the target node for configured mutations
+        observer.observe(targetNode, config);
       }
+    </script>
+  </head>
 
-      //create new sticker
-      let sticker = (await miro.board.widgets.create({
-        "type": "image",
-        "url": "https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png",
-        "x": currentSticker_X,
-        "y": currentSticker_Y
-      }))[0]
-
-      //create new text box inside sticker
-      let textBox = (await miro.board.widgets.create({
-        "type": "text",
-        "text": "------------Type here :O-------------",
-        "x": sticker.x,
-        "y": sticker.y,
-        "width": sticker.bounds.width
-      }))[0]
-
-      //select new sticker and text box
-      miro.board.selection.selectWidgets([sticker, textBox])
-      miro.board.viewport.zoomToObject(textBox)
-
-      // Select the node that will be observed for mutations      
-      const targetNode = document.querySelector('.canvasContextMenu')
-
-      // Options for the observer (which mutations to observe)
-      const config = {
-        attributes: true,
-        childList: true,
-        subtree: true
-      };
-
-      // Callback function to execute when mutations are observed
-      const callback = function (mutationsList, observer) {
-        alert('mutation observed')
-        // Use traditional 'for loops' for IE 11
-        for (const mutation of mutationsList) {
-          if (mutation.type === 'attributes') {
-            document.querySelector('.cm-custom-cm-group').click()
-            //stop observing this instance
-            observer.disconnect();
-          }
-        }
-      };
-
-      // Create an observer instance linked to the callback function
-      const observer = new MutationObserver(callback);
-
-      // Start observing the target node for configured mutations
-      observer.observe(targetNode, config);
-
-
-    }
-    //https://daniel-kasem.github.io/researchingMiro/main.html
-    //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
-  </script>
-</head>
-
-<body>
-  <span>Confirm changes to main.html - 130</span>
-</body>
-
+  <body>
+    <span>Confirm changes to main.html - 131</span>
+  </body>
 </html>

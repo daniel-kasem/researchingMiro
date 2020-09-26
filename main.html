@@ -6,6 +6,37 @@
       src="https://miro.com/app/static/sdk.1.1.js"
     ></script>
     <script type="text/javascript">
+      async function newGroup() {
+        // Select the node that will be observed for mutations
+        const targetNode = document.querySelector(".canvasContextMenu");
+
+        // Options for the observer (which mutations to observe)
+        const config = {
+          attributes: true,
+          childList: true,
+          subtree: true,
+        };
+
+        // Callback function to execute when mutations are observed
+        const callback = function (mutationsList, observer) {
+          alert("mutation observed");
+          // Use traditional 'for loops' for IE 11
+          for (const mutation of mutationsList) {
+            if (mutation.type === "attributes") {
+              alert("attribute mutation detected!");
+              document.querySelector(".cm-custom-cm-group").click();
+              //stop observing this instance
+              observer.disconnect();
+            }
+          }
+        };
+
+        // Create an observer instance linked to the callback function
+        const observer = new MutationObserver(callback);
+
+        // Start observing the target node for configured mutations
+        observer.observe(targetNode, config);
+      }
       //define initial position variables of first sticker/textbox to offset subsequent ones
       let currentSticker_X = 0;
       let currentSticker_Y = 0;
@@ -66,42 +97,10 @@
       }
       //https://daniel-kasem.github.io/researchingMiro/main.html
       //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
-
-      async function newGroup() {
-        // Select the node that will be observed for mutations
-        const targetNode = document.querySelector(".canvasContextMenu");
-
-        // Options for the observer (which mutations to observe)
-        const config = {
-          attributes: true,
-          childList: true,
-          subtree: true,
-        };
-
-        // Callback function to execute when mutations are observed
-        const callback = function (mutationsList, observer) {
-          alert("mutation observed");
-          // Use traditional 'for loops' for IE 11
-          for (const mutation of mutationsList) {
-            if (mutation.type === "attributes") {
-              alert("attribut mutation detected!");
-              document.querySelector(".cm-custom-cm-group").click();
-              //stop observing this instance
-              observer.disconnect();
-            }
-          }
-        };
-
-        // Create an observer instance linked to the callback function
-        const observer = new MutationObserver(callback);
-
-        // Start observing the target node for configured mutations
-        observer.observe(targetNode, config);
-      }
     </script>
   </head>
 
   <body>
-    <span>Confirm changes to main.html - 131</span>
+    <span>Confirm changes to main.html - 132</span>
   </body>
 </html>

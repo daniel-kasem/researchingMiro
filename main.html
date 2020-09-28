@@ -6,8 +6,7 @@
       src="https://miro.com/app/static/sdk.1.1.js"
     ></script>
     <script type="text/javascript">
-      alert("fuck Miro for wasting two weeks of my life on this shitshow sdk");
-      const observer = new MutationObserver(callback);
+      const DansObserver = new MutationObserver(callback);
 
       function callback(mutations) {
         for (let mutation of mutations) {
@@ -15,7 +14,7 @@
             console.log("Mutation Detected: attributes");
             if (MutationRecord.target.id === "group-horiz") {
               document.querySelector(".cm-custom-cm-group").click();
-              observer.disconnect;
+              DansObserver.disconnect;
             }
           }
         }
@@ -36,7 +35,7 @@
                 '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
               onClick: async () => {
                 //newGroup();
-                newAsteroidSticker(observer);
+                newAsteroidSticker(DansObserver);
                 //let newGroup = await newGroup();
                 //document.querySelector('.cm-custom-cm-group').click()
               },
@@ -88,6 +87,6 @@
   </head>
 
   <body>
-    <span>Confirm changes to main.html - 140</span>
+    <span>Confirm changes to main.html - 141</span>
   </body>
 </html>

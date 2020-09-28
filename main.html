@@ -7,6 +7,12 @@
     ></script>
     <script type="text/javascript">
       const DansObserver = new MutationObserver(callback);
+      DansObserver.observe(document.body, { attributes: true });
+      let mutations = DansObserver.takeRecords();
+      //wtf i hate internet examples, all syntax no fucking context
+      if (mutations) {
+        callback(mutations);
+      }
 
       function callback(mutations) {
         for (let mutation of mutations) {
@@ -44,10 +50,7 @@
         });
       });
 
-      async function newAsteroidSticker(observerFunction) {
-        observerFunction.observe(document.body, { attributes: true });
-        let mutations = observerFunction.takeRecords();
-
+      async function newAsteroidSticker() {
         //derive xy of new sticker based on # of previous stickers
         currentSticker_X += stickerOffset;
         currentSticker_Y += stickerOffset;
@@ -81,10 +84,6 @@
         //select new sticker and text box
         miro.board.selection.selectWidgets([sticker, textBox]);
         //miro.board.viewport.zoomToObject(textBox);
-
-        if (mutations) {
-          callback(mutations);
-        }
       }
       //https://daniel-kasem.github.io/researchingMiro/main.html
       //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
@@ -92,6 +91,6 @@
   </head>
 
   <body>
-    <span>Confirm changes to main.html - 142</span>
+    <span>Confirm changes to main.html - 143</span>
   </body>
 </html>

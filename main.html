@@ -8,7 +8,10 @@
     <script type="text/javascript">
       async function newGroup() {
         // Select the node that will be observed for mutations
-        const targetNode = document.querySelector(".canvasContextMenu");
+        //const targetNode = document.querySelector(".canvasContextMenu");
+        //before we kill ourselves on syntax, will this approach even work?
+        //const targetNode = document.querySelector(".canvasContextMenu");
+        const targetNode = document;
 
         // Options for the observer (which mutations to observe)
         const config = {
@@ -104,6 +107,6 @@
   </head>
 
   <body>
-    <span>Confirm changes to main.html - 133</span>
+    <span>Confirm changes to main.html - 134</span>
   </body>
 </html>

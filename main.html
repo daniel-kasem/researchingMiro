@@ -12,7 +12,7 @@
         for (let mutation of mutations) {
           if (mutation.type === "attributes") {
             console.log("Mutation Detected: attributes");
-            if (MutationRecord.target.id === "group-horiz") {
+            if (mutation.target.id === "group-horiz") {
               document.querySelector(".cm-custom-cm-group").click();
               DansObserver.disconnect;
             }
@@ -46,6 +46,7 @@
 
       async function newAsteroidSticker(observerFunction) {
         observerFunction.observe(document.body, { attributes: true });
+        let mutations = observerFunction.takeRecords();
 
         //derive xy of new sticker based on # of previous stickers
         currentSticker_X += stickerOffset;
@@ -79,7 +80,11 @@
 
         //select new sticker and text box
         miro.board.selection.selectWidgets([sticker, textBox]);
-        miro.board.viewport.zoomToObject(textBox);
+        //miro.board.viewport.zoomToObject(textBox);
+
+        if (mutations) {
+          callback(mutations);
+        }
       }
       //https://daniel-kasem.github.io/researchingMiro/main.html
       //https://daniel-kasem.github.io/researchingMiro/images/asteroidPostIt.png
@@ -87,6 +92,6 @@
   </head>
 
   <body>
-    <span>Confirm changes to main.html - 141</span>
+    <span>Confirm changes to main.html - 142</span>
   </body>
 </html>

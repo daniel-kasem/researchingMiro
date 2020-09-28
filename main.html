@@ -6,7 +6,7 @@
       src="https://miro.com/app/static/sdk.1.1.js"
     ></script>
     <script type="text/javascript">
-      let observer = new MutationObserver(callback);
+      const observer = new MutationObserver(callback);
 
       function callback(mutations) {
         for (let mutation of mutations) {
@@ -35,7 +35,7 @@
                 '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
               onClick: async () => {
                 //newGroup();
-                newAsteroidSticker();
+                newAsteroidSticker(observer);
                 //let newGroup = await newGroup();
                 //document.querySelector('.cm-custom-cm-group').click()
               },
@@ -44,8 +44,8 @@
         });
       });
 
-      async function newAsteroidSticker() {
-        observer.observe(document.body, { attributes: true });
+      async function newAsteroidSticker(observerFunction) {
+        observerFunction.observe(document.body, { attributes: true });
 
         //derive xy of new sticker based on # of previous stickers
         currentSticker_X += stickerOffset;
@@ -87,6 +87,6 @@
   </head>
 
   <body>
-    <span>Confirm changes to main.html - 138</span>
+    <span>Confirm changes to main.html - 139</span>
   </body>
 </html>

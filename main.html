@@ -15,6 +15,7 @@
           clearInterval(checkGroup);
         }
       }
+      var checkGroup;
       //define initial position variables of first sticker/textbox to offset subsequent ones
       let currentSticker_X = 0;
       let currentSticker_Y = 0;
@@ -30,7 +31,7 @@
                 '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
               onClick: async () => {
                 newAsteroidSticker();
-                var checkGroup = setInterval(clickGroup, 100);
+                checkGroup = setInterval(clickGroup, 100);
               },
             },
           },
@@ -78,6 +79,6 @@
   </head>
 
   <body>
-    <span>Confirm changes to main.html - 147</span>
+    <span>Confirm changes to main.html - 148</span>
   </body>
 </html>

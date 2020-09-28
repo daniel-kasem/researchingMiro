@@ -6,25 +6,36 @@
       src="https://miro.com/app/static/sdk.1.1.js"
     ></script>
     <script type="text/javascript">
-      const DansObserver = new MutationObserver(callback);
-      DansObserver.observe(document.body, { attributes: true });
-      let mutations = DansObserver.takeRecords();
-      //wtf i hate internet examples, all syntax no fucking context
-      if (mutations) {
-        callback(mutations);
-      }
+      // Select the node that will be observed for mutations
+      //const targetNode = document.body
 
-      function callback(mutations) {
-        for (let mutation of mutations) {
-          if (mutation.type === "attributes") {
-            console.log("Mutation Detected: attributes");
-            if (mutation.target.id === "group-horiz") {
-              document.querySelector(".cm-custom-cm-group").click();
-              DansObserver.disconnect;
-            }
+      // Options for the observer (which mutations to observe)
+      const config = { attributes: true, childList: true, subtree: true };
+
+      // Callback function to execute when mutations are observed
+      const callback = function (mutationsList, observer) {
+        alert("hooray, we detected a mutation!");
+        // Use traditional 'for loops' for IE 11
+        for (const mutation of mutationsList) {
+          if (mutation.type === "childList") {
+            console.log("A child node has been added or removed.");
+          } else if (mutation.type === "attributes") {
+            console.log(
+              "The " + mutation.attributeName + " attribute was modified."
+            );
           }
         }
-      }
+      };
+      //document.querySelector(".cm-custom-cm-group").click();
+      //if (mutation.target.id === "group-horiz") {
+      // Create an observer instance linked to the callback function
+      const observer = new MutationObserver(callback);
+
+      // Start observing the target node for configured mutations
+      //observer.observe(targetNode, config);
+
+      // Later, you can stop observing
+      //observer.disconnect();
 
       //define initial position variables of first sticker/textbox to offset subsequent ones
       let currentSticker_X = 0;
@@ -33,6 +44,7 @@
       let stickerOffset = 50;
 
       miro.onReady(() => {
+        observer.observe(document.body, config);
         miro.initialize({
           extensionPoints: {
             bottomBar: {
@@ -40,10 +52,7 @@
               svgIcon:
                 '<circle cx="12" cy="12" r="9" fill="none" fill-rule="evenodd" stroke="currentColor" stroke-width="2"/>',
               onClick: async () => {
-                //newGroup();
-                newAsteroidSticker(DansObserver);
-                //let newGroup = await newGroup();
-                //document.querySelector('.cm-custom-cm-group').click()
+                newAsteroidSticker();
               },
             },
           },
@@ -91,6 +100,6 @@
   </head>
 
   <body>
-    <span>Confirm changes to main.html - 143</span>
+    <span>Confirm changes to main.html - 144</span>
   </body>
 </html>

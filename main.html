@@ -9,30 +9,6 @@
       //document.querySelector(".cm-custom-cm-group").click();
       //if (mutation.target.id === "group-horiz") {
 
-      var serviceModule = angular.module("javaScript", []);
-
-      serviceModule.controller("controller38", function ($scope) {
-        $scope.javaScriptCallAngular = function (value) {
-          //$scope.usersName = value;
-          //return $scope.usersName;
-          $scope.onClickInternal($event);
-        };
-
-        $scope.javaScriptCallAngularJS = function (value) {
-          //$scope.usersName = "Java Honk";
-          $scope.onClickInternal($event);
-        };
-      });
-
-      function javaScriptCall(value) {
-        var scope = angular
-          .element(document.getElementById("group-horiz"))
-          .scope();
-        scope.click();
-        //var returnValue = scope.javaScriptCallAngular(value);
-        //alert (returnValue);
-      }
-
       //define initial position variables of first sticker/textbox to offset subsequent ones
       let currentSticker_X = 0;
       let currentSticker_Y = 0;
@@ -95,6 +71,6 @@
   </head>
 
   <body>
-    <span>Confirm changes to main.html - 150</span>
+    <span>Confirm changes to main.html - 151</span>
   </body>
 </html>
